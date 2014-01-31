@@ -1,0 +1,18 @@
+{
+  "name": "TharnVision",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Tharnid/TharnVision",
+  "authors": [
+    "Tharnid <jeffmsmithdev@gmail.com>"
+  ],
+  "description": "PS MEAN APP",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "toastr": "~2.0.1",
+    "angular": "~1.2.10",
+    "angular-resource": "~1.2.10",
+    "angular-route": "~1.2.10"
+  }
+}

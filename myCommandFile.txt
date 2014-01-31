@@ -1,0 +1,23 @@
+Just a list of commands that I use to make it easier lol
+
+git add -A
+git commit -m ""
+git branch
+git status
+git checkout -b
+git checkout master
+git push
+
+npm install --save
+npm install --save-dev
+npm install -g
+
+node
+nodemon server.js (I use nodemon)
+
+bower
+bower install jquery
+bower install toastr --save
+bower install angular angular-resource angular-route --save
+
+'use strict'
