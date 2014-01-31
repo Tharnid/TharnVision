@@ -14,10 +14,15 @@ npm install -g
 
 node
 nodemon server.js (I use nodemon)
+set NODE_ENV=production
+set NODE_ENV=development
 
 bower
 bower install jquery
 bower install toastr --save
 bower install angular angular-resource angular-route --save
+
+mongolab
+cli mongo ds027829.mongolab.com:27829/tharnvision -u <dbuser> -p <dbpassword>
 
 'use strict'

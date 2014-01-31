@@ -31,7 +31,15 @@ app.configure(function() {
 
 // mongodb stuff
 // mongo connection
-mongoose.connect('mongodb://localhost/TharnVision');
+//mongoose.connect('mongodb://localhost/TharnVision');
+
+// mongo local or via one of the add on's via Heroku
+if(env === 'development') {
+  mongoose.connect('mongodb://localhost/TharnVision');
+} else {
+  mongoose.connect('mongodb://aragoth:ylix12ylix@ds027829.mongolab.com:27829/tharnvision');
+}
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
