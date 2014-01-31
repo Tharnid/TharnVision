@@ -59,7 +59,7 @@ app.get('*', function(req, res) {
 }); // * asterick will match all routes
 
 // listen to requests
-var port = 9002;
+var port = process.env.PORT || 9002;
 app.listen(port);
 
 console.log('Listening on port ' + port + '.....the server has started!!!');
