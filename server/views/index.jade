@@ -1,7 +1,6 @@
-doctype html// deprecated !!! 5
+extends ../includes/layout
 
-html
-	head
-		// link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon") // favicon file
-	body
-		h1 Hello World
+block main-content
+	section.content
+		div(ng-view)
+	h2= mongoMessage
