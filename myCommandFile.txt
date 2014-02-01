@@ -9,6 +9,7 @@ git checkout master
 git push
 git remote -v
 git push heroku master
+git push -f heroku master (force it)
 
 heroku login
 heroku logs
@@ -17,6 +18,7 @@ heroku config:set NODE_ENV=production
 heroku ps:scale=1
 heroku open
 heroku logs
+heroku keys:add
 
 npm install --save
 npm install --save-dev
