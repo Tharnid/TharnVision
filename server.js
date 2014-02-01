@@ -47,12 +47,12 @@ db.once('open', function callback() {
 });
 
 // test message from mongo
-var messageSchema = mongoose.Schema({message: String});
+/*var messageSchema = mongoose.Schema({message: String});
 var Message = mongoose.model('Message', messageSchema);
 var mongoMessage;
 Message.findOne().exec(function(err, messageDoc) {
   mongoMessage = messageDoc.message;
-});
+});*/
 
 // route for the partials
 app.get('/partials/:partialPath', function(req, res) {
@@ -61,9 +61,7 @@ app.get('/partials/:partialPath', function(req, res) {
 
 // route for index
 app.get('*', function(req, res) {
-	res.render('index', {
-    mongoMessage: mongoMessage
-  });
+	res.render('index');
 }); // * asterick will match all routes
 
 // listen to requests
