@@ -55,8 +55,9 @@ Message.findOne().exec(function(err, messageDoc) {
 });*/
 
 // route for the partials
-app.get('/partials/:partialPath', function(req, res) {
-  res.render('partials/' + req.params.partialPath);
+app.get('/partials/*', function(req, res) { // :partialPath causes an infinite loop that will crash app
+  res.render('../../public/app/' + req.params); // .partialPath remove this to stop loop as well
+  // have to go up to levels now to find partials
 });
 
 // route for index
