@@ -7,6 +7,16 @@ git status
 git checkout -b
 git checkout master
 git push
+git remote -v
+git push heroku master
+
+heroku login
+heroku logs
+heroku create
+heroku config:set NODE_ENV=production
+heroku ps:scale=1
+heroku open
+heroku logs
 
 npm install --save
 npm install --save-dev
