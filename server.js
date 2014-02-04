@@ -1,8 +1,6 @@
 // App requirements
 
 var express = require('express');
-	stylus = require('stylus');
-  mongoose = require('mongoose');
 
 // enviroment variables dev prod etc.
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -10,63 +8,17 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // setting up express variables
 var app = express();
 
-// stylus config
-function compile(str, path) {
-	return stylus(str).set('filename', path);
-}
+// config
+var config = require('./server/config/config')[env];
 
-app.configure(function() {
-  app.set('views', __dirname + '/server/views');
-  app.set('view engine', 'jade');
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(stylus.middleware(
-    {
-      src: __dirname + '/public',
-      compile: compile
-    }
-  ));
-  app.use(express.static(__dirname + '/public'));
-});
+require('./server/config/express')(app, config);
 
-// mongodb stuff
-// mongo connection
-//mongoose.connect('mongodb://localhost/TharnVision');
+require('./server/config/mongoose')(config);
 
-// mongo local or via one of the add on's via Heroku
-if(env === 'development') {
-  mongoose.connect('mongodb://localhost/TharnVision');
-} else {
-  mongoose.connect('mongodb://aragoth:ylix12ylix@ds027829.mongolab.com:27829/tharnvision');
-}
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error...'));
-db.once('open', function callback() {
-  console.log('TharnVision db opened!!!');
-});
-
-// test message from mongo
-/*var messageSchema = mongoose.Schema({message: String});
-var Message = mongoose.model('Message', messageSchema);
-var mongoMessage;
-Message.findOne().exec(function(err, messageDoc) {
-  mongoMessage = messageDoc.message;
-});*/
-
-// route for the partials
-app.get('/partials/*', function(req, res) { // :partialPath causes an infinite loop that will crash app
-  res.render('../../public/app/' + req.params); // .partialPath remove this to stop loop as well
-  // have to go up to levels now to find partials
-});
-
-// route for index
-app.get('*', function(req, res) {
-	res.render('index');
-}); // * asterick will match all routes
+require('./server/config/routes')(app);
 
 // listen to requests
-var port = process.env.PORT || 9002;
-app.listen(port);
+// var port = process.env.PORT || 9002;
+app.listen(config.port);
 
-console.log('Listening on port ' + port + '.....the server has started!!!');
+console.log('Listening on port ' + config.port + '.....the server has started!!!');
