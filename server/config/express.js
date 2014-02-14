@@ -1,6 +1,6 @@
 // required 
-var express = require('express');
-    stylus = require('stylus');
+var express = require('express'),
+    stylus = require('stylus'),
     passport = require('passport');
 
 
