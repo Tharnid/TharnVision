@@ -1,5 +1,5 @@
 // required
-var passport = require('passport');
+var auth = require('./auth');
 
 
 module.exports =  function(app) {
@@ -10,17 +10,7 @@ module.exports =  function(app) {
 	});
 
 	// login route
-	  app.post('/login',function(req, res, next) {
-	  	var auth = passport.authenticate('local', function(err, user) {
-	  		if(err) {return next(err);}
-	  		if(!user) { res.send({success:false})}
-	  		req.logIn(user, function(err) {
-	  			if(err) {return next(err);}
-	  			res.send({success:true, user: user});
-	  		})
-	  	})
-	  	auth(req, res, next);
-	  });
+	  app.post('/login', auth.authenticate);
 
 	// route for index
 	app.get('*', function(req, res) {
