@@ -1,4 +1,4 @@
-angular.module('app').controller('tvNavBarLoginCtrl', function($scope, $http, tvIdentity, tvNotifier, tvAuth) {
+angular.module('app').controller('tvNavBarLoginCtrl', function($scope, $http, tvIdentity, tvNotifier, tvAuth, $location) {
   $scope.identity = tvIdentity;
   $scope.signIn = function(username, password) {
     tvAuth.authenticateUser(username, password).then(function(success) {
@@ -9,4 +9,13 @@ angular.module('app').controller('tvNavBarLoginCtrl', function($scope, $http, tv
       }
     });
   }
+
+  $scope.signout = function() {
+    tvAuth.logoutUser().then(function() {
+      $scope.username = "";
+      $scope.password = "";
+      mvNotifier.notify('You have successfully signed out!');
+      $location.path('/');
+    })
+  }  
 });

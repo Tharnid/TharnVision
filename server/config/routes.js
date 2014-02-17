@@ -10,7 +10,13 @@ module.exports =  function(app) {
 	});
 
 	// login route
-	  app.post('/login', auth.authenticate);
+	app.post('/login', auth.authenticate);
+
+	// logout route
+	  app.post('/logout', function(req, res) {
+	    req.logout();
+	    res.end();
+	  });
 
 	// route for index
 	app.get('*', function(req, res) {

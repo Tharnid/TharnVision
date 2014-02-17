@@ -15,6 +15,16 @@ angular.module('app').factory('tvAuth', function($http, tvIdentity, $q) {
 			});
 
 			return dfd.promise;
+		},
+
+		logoutUser: function() {
+			var dfd = $q.defer();
+			$http.post('/logout', {logout:true}).then(function() {
+				tvIdentity.currentUser = undefined;
+				dfd.resolve();
+			});
+
+			return dfd.promise;
 		}
 	}
 });
