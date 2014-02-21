@@ -20,6 +20,8 @@ module.exports =  function(app) {
 
 	// route for index
 	app.get('*', function(req, res) {
-		res.render('index');
+	    res.render('index', {
+	      bootstrappedUser: req.user
+	    });
 	}); // * asterick will match all routes
 }

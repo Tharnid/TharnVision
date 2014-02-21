@@ -14,7 +14,7 @@ angular.module('app').controller('tvNavBarLoginCtrl', function($scope, $http, tv
     tvAuth.logoutUser().then(function() {
       $scope.username = "";
       $scope.password = "";
-      mvNotifier.notify('You have successfully signed out!');
+      tvNotifier.notify('You have successfully signed out!');
       $location.path('/');
     })
   }  
