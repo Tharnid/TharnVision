@@ -20,7 +20,7 @@ module.exports = function(config) {
 		username: String,
 		salt: String,
 		hashed_pwd: String,
-		// roles: [String]
+		roles: [String]
 	});
 
   userSchema.methods = {
@@ -37,13 +37,13 @@ module.exports = function(config) {
       var salt, hash;
       salt = createSalt();
       hash = hashPwd(salt, 'tharnid');
-      User.create({firstName:'tharnid',lastName:'tharnid',username:'tharnid', salt: salt, hashed_pwd: hash}); // , salt: salt, hashed_pwd: hash, roles: ['admin']
+      User.create({firstName:'tharnid',lastName:'tharnid',username:'tharnid', salt: salt, hashed_pwd: hash, roles: ['admin']}); // 
       salt = createSalt();
       hash = hashPwd(salt, 'saldor');
-      User.create({firstName:'saldor',lastName:'saldor',username:'saldor', salt: salt, hashed_pwd: hash}); // , salt: salt, hashed_pwd: hash, roles: []
+      User.create({firstName:'saldor',lastName:'saldor',username:'saldor', salt: salt, hashed_pwd: hash, roles: []}); // 
       salt = createSalt();
       hash = hashPwd(salt, 'aragoth');
-      User.create({firstName:'aragoth',lastName:'aragoth',username:'aragoth', salt: salt, hashed_pwd: hash}); // , salt: salt, hashed_pwd: hash
+      User.create({firstName:'aragoth',lastName:'aragoth',username:'aragoth', salt: salt, hashed_pwd: hash}); //  
     }
   })
 }
