@@ -17,7 +17,7 @@ module.exports = function(config) {
       // adding anuglar files
       'public/vendor/angular/angular.js',
       'public/vendor/angular-resource/angular-resource.js',
-      'public/vendor/angualr-mocks/angular-mocks.js',
+      'public/vendor/angular-mocks/angular-mocks.js',
 
       // toastr and other libraries
       'test/test.app.js',
