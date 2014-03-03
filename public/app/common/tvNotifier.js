@@ -6,5 +6,10 @@ angular.module('app').factory('tvNotifier', function(tvToastr) {
 			tvToastr.success(msg);
 			console.log(msg);
 		}
+	},
+
+	error: function(msg) {
+		tvToastr.error(msg);
+		console.log(msg);
 	}
 });

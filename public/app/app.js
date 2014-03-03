@@ -12,7 +12,11 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     .when('/', { templateUrl: '/partials/main/main', controller: 'tvMainCtrl'})
     .when('/admin/users', { templateUrl: '/partials/admin/user-list',
       controller: 'tvUserListCtrl', resolve: routeRoleChecks.admin
-    });
+    })
+    // adding signup link
+    .when('/signup', { templateUrl: '/partials/account/signup', 
+      controller: 'tvSignupCtrl'
+    })
 
 });
 
