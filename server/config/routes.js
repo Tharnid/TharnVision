@@ -1,5 +1,6 @@
 // required
 var auth = require('./auth'),
+	users = require('../controllers/users'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User');
 
@@ -7,11 +8,9 @@ var auth = require('./auth'),
 module.exports =  function(app) {
 
 	// returns a list of all users...adding chain of middleware to make sure users have access
-	app.get('/api/users', auth.requiresRole('admin') ,function(req, res) { // don't invoke just pass the function
-		User.find({}).exec(function(err, collection) {
-			res.send(collection);
-		})
-	});
+	app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
+	// create users
+	app.post('/api/users', users.createUser);
 
 	// route for the partials
 	app.get('/partials/*', function(req, res) { // :partialPath causes an infinite loop that will crash app

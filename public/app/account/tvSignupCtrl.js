@@ -8,7 +8,7 @@ angular.module('app').controller('tvSignupCtrl', function($scope, tvUser, tvNoti
     };
 
     tvAuth.createUser(newUserData).then(function() {
-      mtNotifier.notify('User account created!');
+      tvNotifier.notify('User account created!');
       $location.path('/');
     }, function(reason) {
       tvNotifier.error(reason);
