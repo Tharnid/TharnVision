@@ -45,6 +45,16 @@ angular.module('app').factory('tvAuth', function($http, tvIdentity, $q, tvUser) 
         return $q.reject('not authorized');
       }
 
+    },
+
+    authorizeAuthenticatedUserForRoute: function () {
+      if(tvIdentity.isAuthenticated()) {
+        return true;
+      } 
+      else
+      {
+        return $q.reject('not authorized');
+      } 
     }
   }
 });

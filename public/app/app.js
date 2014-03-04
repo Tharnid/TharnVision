@@ -4,7 +4,11 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
   var routeRoleChecks = {
     admin: {auth: function(tvAuth) {
       return tvAuth.authorizeCurrentUserForRoute('admin')
-    }}
+    }},
+
+    user: {auth: function(tvAuth) {
+      return tvAuth.authorizeAuthenticatedUserForRoute()
+    }},
   }
 
   $locationProvider.html5Mode(true);
@@ -17,6 +21,12 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     .when('/signup', { templateUrl: '/partials/account/signup', 
       controller: 'tvSignupCtrl'
     })
+
+    // adding profile link
+    .when('/profile', { templateUrl: '/partials/account/profile', 
+      controller: 'tvProfileCtrl', resolve: routeRoleChecks.user
+    })
+
 
 });
 
