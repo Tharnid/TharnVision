@@ -11,6 +11,8 @@ module.exports =  function(app) {
 	app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
 	// create users
 	app.post('/api/users', users.createUser);
+	// update users
+	app.put('/api/users', users.updateUser);
 
 	// route for the partials
 	app.get('/partials/*', function(req, res) { // :partialPath causes an infinite loop that will crash app

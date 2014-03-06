@@ -30,6 +30,20 @@ angular.module('app').factory('tvAuth', function($http, tvIdentity, $q, tvUser) 
       return dfd.promise;
     },
 
+    updateCurrentUser: function(newUserData) {
+      var dfd = $q.defer();
+
+      var clone = angular.copy(tvIdentity.currentUser);
+      angular.extend(clone, newUserData);
+      clone.$update().then(function() {
+        tvIdentity.currentUser = clone;
+        dfd.resolve();
+      }, function(response) {
+        dfd.reject(response.data.reason);
+      });
+      return dfd.promise;
+    },
+
     logoutUser: function() {
       var dfd = $q.defer();
       $http.post('/logout', {logout:true}).then(function() {
