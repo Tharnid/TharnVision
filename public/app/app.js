@@ -17,17 +17,19 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     .when('/admin/users', { templateUrl: '/partials/admin/user-list',
       controller: 'tvUserListCtrl', resolve: routeRoleChecks.admin
     })
-    // adding signup link
+    // adding signup route
     .when('/signup', { templateUrl: '/partials/account/signup', 
       controller: 'tvSignupCtrl'
     })
 
-    // adding profile link
+    // adding profile route
     .when('/profile', { templateUrl: '/partials/account/profile', 
       controller: 'tvProfileCtrl', resolve: routeRoleChecks.user
     })
-
-
+    // adding course route
+    .when('/courses', { templateUrl: '/partials/courses/course-list', 
+      controller: 'tvCourseListCtrl', resolve: routeRoleChecks.user
+    })
 });
 
 angular.module('app').run(function($rootScope, $location) {

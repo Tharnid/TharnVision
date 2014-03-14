@@ -1,6 +1,7 @@
 // required
 var auth = require('./auth'),
 	users = require('../controllers/users'),
+	courses = require('../controllers/courses'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User');
 
@@ -19,6 +20,14 @@ module.exports =  function(app) {
 	  res.render('../../public/app/' + req.params); // .partialPath remove this to stop loop as well
 	  // have to go up to levels now to find partials
 	});
+
+	// course list
+    app.get('/api/courses', courses.getCourses);
+
+	// 404 catch route
+	app.all('/api/*', function(req, res) {
+    	res.send(404);
+  	});
 
 	// login route
 	app.post('/login', auth.authenticate);

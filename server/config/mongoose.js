@@ -1,5 +1,7 @@
-var mongoose = require('mongoose'),
+ var mongoose = require('mongoose'),
+	// models
 	userModel = require('../models/User');
+	courseModel = require('../models/Course');
 
 module.exports = function(config) {
 	// connect to mongo env
@@ -14,7 +16,7 @@ module.exports = function(config) {
 
 	// create default users function called from models/User.js
   	userModel.createDefaultUsers();
-
+  	courseModel.createDefaultCourses();
 };
 
 
